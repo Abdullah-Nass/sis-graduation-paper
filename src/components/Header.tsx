@@ -1,6 +1,7 @@
 import { FormattedMessage } from "react-intl";
 import { useLocale } from "./UseLocale";
 import { Link } from "react-router-dom";
+import { clearAuthenticated } from "../auth";
 
 const Header = () => {
   const { locale, switchLanguage } = useLocale();
@@ -56,7 +57,11 @@ const Header = () => {
               </li>
 
               <li>
-                <Link to="/login" className="dropdown-item ">
+                <Link
+                  to="/login"
+                  className="dropdown-item "
+                  onClick={() => clearAuthenticated()}
+                >
                   <i className="fas fa-sign-out-alt"></i>
                   <FormattedMessage id="header.signOut" />
                 </Link>

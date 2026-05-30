@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setAuthenticated } from "../auth";
 import { useLocale } from "./UseLocale";
 import { useIntl } from "react-intl";
 
@@ -13,6 +14,7 @@ const Login = () => {
 
   const handleLogin = () => {
     if (username.trim() && password.trim()) {
+      setAuthenticated(remember);
       navigate("/home");
     }
   };
