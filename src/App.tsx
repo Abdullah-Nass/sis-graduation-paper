@@ -1,5 +1,4 @@
-import type { ReactNode } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { isAuthenticated } from "./auth";
 import Login from "./components/LoginPage";
 import Header from "./components/Header";
@@ -16,8 +15,12 @@ const Home = () => (
   </>
 );
 
-const ProtectedRoute = ({ children }: { children: ReactNode }) =>
-  isAuthenticated() ? children : <Navigate to="/login" replace />;
+function ProtectedRoute() {
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" replace />;
+  }
+  return <Outlet />;
+}
 
 function App() {
   return (
@@ -25,14 +28,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
