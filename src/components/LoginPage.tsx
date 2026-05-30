@@ -21,7 +21,7 @@ const Login = () => {
     <div
       style={{
         minHeight: "100vh",
-        backgroundImage: "url('public/login-bg.jpg')",
+        backgroundImage: "url('/logIn-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
