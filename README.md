@@ -10,6 +10,8 @@ This project is a bilingual (Arabic–English) web application that replicates a
 
 The application was developed as the primary dataset for an academic research paper on website localization, using a genuine institutional interface as its foundation.
 
+The live website can be accessed through: [Live site](https://sis-graduation-project.netlify.app/login)
+
 ---
 
 ## Features
